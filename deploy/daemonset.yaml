@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: tail-lifter
+  namespace: tailscale-relay
+spec:
+  selector:
+    matchLabels: { app: tail-lifter }
+  template:
+    metadata:
+      labels: { app: tail-lifter }
+    spec:
+      hostNetwork: true
+      serviceAccountName: tail-lifter
+      initContainers:
+      - name: loader
+        image: ghcr.io/ziwon/tail-lifter:latest
+        imagePullPolicy: Always
+        command: ["./install.sh"]
+        env:
+        - name: IFACE
+          value: tailscale0
+        securityContext:
+          privileged: true
+      containers:
+      - name: populator
+        image: ghcr.io/ziwon/tail-lifter:latest
+        imagePullPolicy: Always
+        command: ["/usr/bin/tail-lifter"]
+        volumeMounts:
+        - name: bpf
+          mountPath: /sys/fs/bpf
+      volumes:
+      - name: bpf
+        hostPath:
+          path: /sys/fs/bpf

@@ -1,0 +1,54 @@
+# Compiled BPF objects
+*.bpf.o
+*.o
+
+# Go binaries
+tail-lifter
+cmd/tail-lifter/tail-lifter
+
+# Go build artifacts
+/vendor/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Docker
+.dockerignore
+
+# Kubernetes
+*.kubeconfig
+
+# Logs
+*.log
+
+# Temporary files
+/tmp/
+*.tmp
+*.temp
+
+# Environment files
+.env
+.env.local
+
+# Coverage reports
+coverage.out
+*.cover
+
+# Test binaries
+*.test
+
+# Binary output directories
+/bin
