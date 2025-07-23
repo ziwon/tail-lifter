@@ -16,8 +16,8 @@ import (
 )
 
 const (
-	bpfPathSvc  = "/sys/fs/bpf/svc_map"
-	bpfPathCt   = "/sys/fs/bpf/ct_map"
+	bpfPathSvc = "/sys/fs/bpf/svc_map"
+	bpfPathCt  = "/sys/fs/bpf/ct_map"
 )
 
 var (
@@ -67,9 +67,9 @@ type endpointsHandler struct {
 	svcMap *ebpf.Map
 }
 
-func (h *endpointsHandler) OnAdd(obj interface{}, isInInitialList bool)  { h.sync(obj) }
-func (h *endpointsHandler) OnUpdate(_, obj interface{}) { h.sync(obj) }
-func (h *endpointsHandler) OnDelete(obj interface{}) { h.sync(obj) }
+func (h *endpointsHandler) OnAdd(obj interface{}, isInInitialList bool) { h.sync(obj) }
+func (h *endpointsHandler) OnUpdate(_, obj interface{})                 { h.sync(obj) }
+func (h *endpointsHandler) OnDelete(obj interface{})                    { h.sync(obj) }
 
 func (h *endpointsHandler) sync(obj interface{}) {
 	ep := obj.(*corev1.Endpoints)
