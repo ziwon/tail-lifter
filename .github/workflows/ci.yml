@@ -72,7 +72,7 @@ jobs:
         run: |
           if [ "$(gofmt -s -l ./cmd | wc -l)" -gt 0 ]; then
             echo "Code is not formatted:"
-            gofmt -s -l .
+            gofmt -s -l ./cmd
             exit 1
           fi
           
