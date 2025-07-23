@@ -3,7 +3,7 @@
 *.o
 
 # Go binaries
-tail-lifter
+/tail-lifter
 cmd/tail-lifter/tail-lifter
 
 # Go build artifacts
